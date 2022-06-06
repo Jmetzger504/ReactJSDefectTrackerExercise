@@ -75,6 +75,7 @@
 
 #searchResults {
   color: red;
+  font-weight: bold;
 }
 
 thead {

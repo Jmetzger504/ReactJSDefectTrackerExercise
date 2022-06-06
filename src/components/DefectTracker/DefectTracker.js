@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useInsertionEffect,useEffect,useState } from 'react';
 import PropTypes from 'prop-types';
 import './DefectTracker.module.css';
-import { useState } from 'react';
+import axios from 'axios';
+
 
 const DefectTracker = () => {
 
-  const defects =[
-    {'category': 'UI', 'description': "It don't work no mo!", 'priority': 2, 'status': "Open", 'changeStatus': "Close Defect"},
-    {'category': "Functional", 'description': "It done did broke!", 'priority': 1, 'status': "Open", 'changeStatus': "Close Defect"},
-    {'category': "Change Request", 'description': "Add function to remove users", 'priority': 3, 'status': "Closed", 'changeStatus': "No Action Pending"}
-  ];
+  const [defects,setDefects] = useState([
+
+  ])
+
+  useEffect(() =>{
+    axios.get('defects.json')
+    .then(result => 
+      setDefects(result.data))
+    .catch(error => console.log(error));
+  },[])
 
   return (
     <div className = "container">
@@ -37,7 +43,7 @@ const DefectTracker = () => {
         </div>
         <br/>
         <h2>Defect Details</h2>
-        <p id = "searchResults">Search results: 3</p>
+        <p id = "searchResults">Search Results: {defects.length}</p>
         <table className = "defectTable table table-striped table-bordered">
           <thead>
             <tr>
