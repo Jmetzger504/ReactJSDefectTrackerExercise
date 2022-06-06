@@ -82,3 +82,12 @@ thead {
   background-color: rgb(78, 78, 245);
   color: white;
 }
+
+#form {
+  width: 20%;
+  margin: auto;
+}
+
+#form Button {
+  margin: auto;
+}

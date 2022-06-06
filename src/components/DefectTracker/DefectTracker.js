@@ -1,5 +1,4 @@
-import React, { useInsertionEffect,useEffect,useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect,useState } from 'react';
 import './DefectTracker.module.css';
 import axios from 'axios';
 
@@ -9,6 +8,19 @@ const DefectTracker = () => {
   const [defects,setDefects] = useState([
 
   ])
+
+  const [priority, setPriority] = useState('All');
+  const [category, setCategory] = useState('All');
+
+  const handlePriorityChange = (event) => {
+    setPriority(event.target.value);
+    //console.log("Priority: " + event.target.value);
+  }
+
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+    //console.log("Category: " + event.target.value);
+  }
 
   useEffect(() =>{
     axios.get('defects.json')
@@ -26,7 +38,7 @@ const DefectTracker = () => {
           <h2>Filter Details</h2>
           <br/>
           <label for = "priority"><b>Priority </b></label>
-          <select name = "priority" id = "priority" class = "form-select">
+          <select onChange = {handlePriorityChange} name = "priority" id = "priority" class = "form-select">
             <option>All</option>
             <option>1</option>
             <option>2</option>
@@ -34,7 +46,7 @@ const DefectTracker = () => {
           </select>
           <br/><br/>
           <label for = "category"><b>Category </b></label>
-          <select name = "category" id = "category" class = "form-select">
+          <select onChange = {handleCategoryChange} name = "category" id = "category" class = "form-select">
             <option>All</option>
             <option>UI</option>
             <option>Functional</option>
@@ -56,13 +68,46 @@ const DefectTracker = () => {
           </thead>
           <tbody>
             {defects.map(defect => {
-              return (<tr>
-                        <td>{defect.category}</td>
-                        <td>{defect.description}</td>
-                        <td>{defect.priority}</td>
-                        <td>{defect.status}</td>
-                        <td>{defect.changeStatus}</td>
-              </tr>)
+              if(category === 'All' && priority === 'All')
+                return (
+                  <tr>
+                    <td>{defect.category}</td>
+                    <td>{defect.description}</td>
+                    <td>{defect.priority}</td>
+                    <td>{defect.status}</td>
+                    <td>{defect.changeStatus}</td>
+                  </tr>
+                )
+                else if(category === 'All' && priority == defect.priority)
+                return (
+                  <tr>
+                    <td>{defect.category}</td>
+                    <td>{defect.description}</td>
+                    <td>{defect.priority}</td>
+                    <td>{defect.status}</td>
+                    <td>{defect.changeStatus}</td>
+                  </tr>
+                )
+                else if(priority === 'All' && category === defect.category)
+                return (
+                  <tr>
+                    <td>{defect.category}</td>
+                    <td>{defect.description}</td>
+                    <td>{defect.priority}</td>
+                    <td>{defect.status}</td>
+                    <td>{defect.changeStatus}</td>
+                  </tr>
+                )
+                else if(priority == defect.priority && category === defect.category)
+                return (
+                  <tr>
+                    <td>{defect.category}</td>
+                    <td>{defect.description}</td>
+                    <td>{defect.priority}</td>
+                    <td>{defect.status}</td>
+                    <td>{defect.changeStatus}</td>
+                  </tr>
+                )
             })}
           </tbody>
         </table>
