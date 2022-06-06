@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+.container * {  
+  margin: auto;
+  text-align: center;
+}
+
+.filterDetails {
+  margin: auto;
+  width: 95%;
+  border: 3px solid rgb(32, 44, 218);
+  padding: 10px;
+}
+
+.filterDetails * {
+  margin: auto;
+  text-align: center;
+}
+
+#description {
+  width: 40%;
+}
+
+#category {
+  width: 20%;
+}
+
+#priority {
+  width: 10%;
+}
+
+#searchResults {
+  color: red;
+}
+
+thead {
+  background-color: rgb(78, 78, 245);
+  color: white;
+}
