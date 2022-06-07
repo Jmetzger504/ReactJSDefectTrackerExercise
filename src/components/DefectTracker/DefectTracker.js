@@ -37,16 +37,16 @@ const DefectTracker = () => {
         <div className = "filterDetails">
           <h2>Filter Details</h2>
           <br/>
-          <label for = "priority"><b>Priority </b></label>
-          <select onChange = {handlePriorityChange} name = "priority" id = "priority" class = "form-select">
+          <label htmlFor = "priority"><b>Priority </b></label>
+          <select onChange = {handlePriorityChange} name = "priority" id = "priority" className = "form-select">
             <option>All</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
           </select>
           <br/><br/>
-          <label for = "category"><b>Category </b></label>
-          <select onChange = {handleCategoryChange} name = "category" id = "category" class = "form-select">
+          <label htmlFor = "category"><b>Category </b></label>
+          <select onChange = {handleCategoryChange} name = "category" id = "category" className = "form-select">
             <option>All</option>
             <option>UI</option>
             <option>Functional</option>

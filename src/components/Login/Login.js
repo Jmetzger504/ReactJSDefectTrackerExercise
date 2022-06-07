@@ -14,6 +14,10 @@ const Login = () => {
     setCredentials(tempCredentials);
   }
 
+  const login = () => {
+    
+  }
+
 
   return (
     <>
