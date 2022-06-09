@@ -23,7 +23,7 @@ const DefectTracker = () => {
   }
 
   useEffect(() =>{
-    axios.get('defects.json')
+    axios.get('http://localhost:4000/defects')
     .then(result => 
       setDefects(result.data))
     .catch(error => console.log(error));

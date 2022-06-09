@@ -1,0 +1,48 @@
+{
+  "defects": [
+    {
+      "id": 1,
+      "category": "UI",
+      "description": "It don't work no mo!",
+      "priority": 2,
+      "status": "Open",
+      "changeStatus": "Close Defect"
+    },
+    {
+      "id": 2,
+      "category": "Functional",
+      "description": "It done did broke!",
+      "priority": 1,
+      "status": "Open",
+      "changeStatus": "Close Defect"
+    },
+    {
+      "id": 3,
+      "category": "Change Request",
+      "description": "Add function to remove users",
+      "priority": 3,
+      "status": "Closed",
+      "changeStatus": "No Action Pending"
+    },
+    {
+      "category": "UI",
+      "description": "Hello, Redux!",
+      "priority": 3,
+      "status": "Open",
+      "changeStatus": "Close Defect",
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "username": "Jmetzger",
+      "password": "Metzger",
+      "role": "tester"
+    },
+    {
+      "username": "Jmetzger5",
+      "password": "Metzger",
+      "role": "dev"
+    }
+  ]
+}

@@ -3,31 +3,31 @@ import PropTypes from 'prop-types';
 import styles from './Login.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button,Form} from 'react-bootstrap';
-
+import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 const Login = () => {
 
-  const [isValid,setIsValid] = useState(false);
   const [credentials,setCredentials] = useState({username: "", password: ""});
+  const navigate = useNavigate();
 
   const loginChange = (event) => {
     let tempCredentials = Object.assign({},{[event.target.name]: event.target.value})
     setCredentials(tempCredentials);
   }
 
-  const login = () => {
-    
+  const login = (event) => {
+    event.preventDefault();
+    navigate('/dashboard');
   }
 
 
   return (
     <>
-    <Form id = "form">
+    <Form id = "form" onSubmit = {login}>
       <Form.Group className="mb-3" controlId="formBasicUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control name = "username" type="text" placeholder="Enter your username" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">

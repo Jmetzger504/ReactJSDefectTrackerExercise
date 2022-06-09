@@ -1,5 +1,0 @@
-[
-    {"category": "UI", "description": "It don't work no mo!", "priority": 2, "status": "Open", "changeStatus": "Close Defect"},
-    {"category": "Functional", "description": "It done did broke!", "priority": 1, "status": "Open", "changeStatus": "Close Defect"},
-    {"category": "Change Request", "description": "Add function to remove users", "priority": 3, "status": "Closed", "changeStatus": "No Action Pending"}
-]

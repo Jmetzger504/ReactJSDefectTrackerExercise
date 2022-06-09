@@ -11,18 +11,26 @@ const AddDefect = () => {
   const [description,setDescription] = useState('');
   const [priority,setPriority] = useState('3');
 
-  const newDefect = (category,description,priority) => {
-    let newDefect = {"category": category, "description": description, "priority": priority, "status": "Open"};
+  const newDefect = (event,category,description,priority) => {
+    event.preventDefault();
+    let newDefect = {"category": category, "description": description, "priority": Number(priority), "status": "Open",changeStatus: "Close Defect"};
     console.log(newDefect);
-    axios.post('defects.json',newDefect)
-    .then(console.log("Yay!"))
+    axios(`http://localhost:4000/defects`, {
+      method: 'POST',
+      crossdomain: true,
+      data: newDefect,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then()
     .catch(error => console.log(error));
   }
   
   return (
     <>
     <h2>Add Defect</h2>
-  <Form id = "form">
+  <Form id = "form" onSubmit = {(event) => newDefect(event,category,description,priority)}> 
   <Form.Group className = "mb-3">
     <Form.Label>Defect Category</Form.Label>
     <Form.Select onChange = {(event) => setCategory(event.target.value)}>
