@@ -2,12 +2,9 @@ import React, { useEffect,useState } from 'react';
 import './DefectTracker.module.css';
 import axios from 'axios';
 import { store } from '../../stores/store';
-import { Button } from 'react-bootstrap';
-import { Navigate, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const DefectTracker = () => {
-  let navigate = useNavigate();
   let addDefectButton = <p><Link to = "/adddefect">Add Defect</Link></p>;
 
   const state = store.getState();

@@ -4,9 +4,12 @@ import styles from './AddDefect.module.css';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { store } from '../../stores/store';
 
 const AddDefect = () => {
-  
+
+  const state = store.getState();
   const [category, setCategory] = useState('UI');
   const [description,setDescription] = useState('');
   const [priority,setPriority] = useState('3');
@@ -29,32 +32,45 @@ const AddDefect = () => {
   
   return (
     <>
-    <h2>Add Defect</h2>
-  <Form id = "form" onSubmit = {(event) => newDefect(event,category,description,priority)}> 
-  <Form.Group className = "mb-3">
-    <Form.Label>Defect Category</Form.Label>
-    <Form.Select onChange = {(event) => setCategory(event.target.value)}>
-      <option value = "UI">UI</option>
-      <option value = "Functional">Functional</option>
-      <option value = "Change Request">Change Request</option>
-    </Form.Select>
-  </Form.Group>
-  <Form.Group className = "mb-3">
-    <Form.Label>Description</Form.Label>
-    <Form.Control as = "textarea" rows = {3} onChange = {(event) => setDescription(event.target.value)}></Form.Control>
-  </Form.Group>
-  <Form.Group className='mb-3'>
-    <Form.Label>Priority Level</Form.Label>
-    <Form.Select onChange = {(event) => setPriority(event.target.value)}>
-      <option value = "3">3</option>
-      <option value = "2">2</option>
-      <option value = "1">1</option>
-    </Form.Select>
-  </Form.Group>
-    <Button variant = "primary" type = "submit">Submit</Button>
-  </Form>
-  </>
-);}
+    {state.user.role === "tester" ?
+    <div className='container'>
+      <h2>Add Defect</h2>
+      <p>
+        <a href = "/">Logout </a>
+      </p>
+      <p>
+        <Link to = "/dashboard">View Defects</Link>
+      </p>
+      <br/>
+      <Form id = "form" onSubmit = {(event) => newDefect(event,category,description,priority)}> 
+      <Form.Group className = "mb-3">
+        <Form.Label>Defect Category</Form.Label>
+        <Form.Select onChange = {(event) => setCategory(event.target.value)}>
+          <option value = "UI">UI</option>
+          <option value = "Functional">Functional</option>
+          <option value = "Change Request">Change Request</option>
+        </Form.Select>
+      </Form.Group>
+      <Form.Group className = "mb-3">
+        <Form.Label>Description</Form.Label>
+        <Form.Control as = "textarea" rows = {3} onChange = {(event) => setDescription(event.target.value)}></Form.Control>
+      </Form.Group>
+      <Form.Group className='mb-3'>
+        <Form.Label>Priority Level</Form.Label>
+        <Form.Select onChange = {(event) => setPriority(event.target.value)}>
+          <option value = "3">3</option>
+          <option value = "2">2</option>
+          <option value = "1">1</option>
+        </Form.Select>
+      </Form.Group>
+        <Button variant = "primary" type = "submit">Submit</Button>
+      </Form>
+    </div> :
+  <h1>ACCESS DENIED</h1>
+  }
+</>
+);
+}
 
 AddDefect.propTypes = {};
 
