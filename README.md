@@ -1,4 +1,4 @@
-# Getting Started with this application.
+# Getting Started with this application
 
 In the project directory, you can run:
 
