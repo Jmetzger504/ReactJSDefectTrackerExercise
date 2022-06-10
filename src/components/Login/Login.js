@@ -19,7 +19,6 @@ const Login = (props) => {
   const login = (event,credentials) => {
     event.preventDefault();
     props.login(credentials);
-    console.log("login prop: " + props.loggedIn);
   }
 
   useEffect(() => {},[state.user.loggedIn])
