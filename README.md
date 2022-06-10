@@ -14,3 +14,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ### `json-server --watch db.json --port 4000`
 
 Hosts a faux server to demonstrate the application. You need this to run the app!!
+The data can be viewed in the db.json file.
