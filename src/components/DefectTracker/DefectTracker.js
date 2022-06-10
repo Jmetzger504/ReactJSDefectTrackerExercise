@@ -1,9 +1,11 @@
 import React, { useEffect,useState } from 'react';
 import './DefectTracker.module.css';
 import axios from 'axios';
-
+import { store } from '../../stores/store';
 
 const DefectTracker = () => {
+
+  const state = store.getState();
 
   const [defects,setDefects] = useState([
 
@@ -14,12 +16,10 @@ const DefectTracker = () => {
 
   const handlePriorityChange = (event) => {
     setPriority(event.target.value);
-    //console.log("Priority: " + event.target.value);
   }
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
-    //console.log("Category: " + event.target.value);
   }
 
   useEffect(() =>{
@@ -29,11 +29,12 @@ const DefectTracker = () => {
     .catch(error => console.log(error));
   },[])
 
+
   return (
     <div className = "container">
         <h1>Defect Tracker</h1>
-        <a href = '#'><p>Logout</p></a>
-        <p><a href = '#'><span>Add Defect</span></a> <a href = '#'><span>View Defects</span></a></p>
+        <a href = '/'><p>Logout</p></a>
+        <p><a href = '#'>Add Defect</a></p>
         <div className = "filterDetails">
           <h2>Filter Details</h2>
           <br/>
